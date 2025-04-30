@@ -5,7 +5,9 @@ get_sapphic_bison_test_kits <- function() {
 	bttn <- remDr$findElement(using="xpath", "//button[text()=\"Order a Kit\"]")
 	bttn$clickElement()
 
-	kit_options <- remDr$findElements(using="xpath", "(//select)[1]/option")
+	Sys.sleep(0.5)
+
+	kit_options <- remDr$findElements(using="xpath", "(//select[@name=\'kitType\'])/option")
 
 	rets <- list()
 
@@ -15,6 +17,8 @@ get_sapphic_bison_test_kits <- function() {
 		ret <- list()
 		opt_title <- opt$getElementText()
 		opt$clickElement()
+		Sys.sleep(0.5)
+
 		opt_desc <- remDr$findElement(using="xpath", "//p[starts-with(., \"This kit\")]")$getElementText()
 
 
